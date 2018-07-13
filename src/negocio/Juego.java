@@ -26,7 +26,6 @@ public class Juego implements Serializable {
     private int numPartidas;
     private int resultados;
     private Tablero tablero;
-    private ArrayList<Usuario> usuario;
 
     public Juego() {
         tablero = new Tablero();
@@ -56,14 +55,6 @@ public class Juego implements Serializable {
 
     public void setTablero(Tablero tablero) {
         this.tablero = tablero;
-    }
-
-    public ArrayList<Usuario> getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(ArrayList<Usuario> usuario) {
-        this.usuario = usuario;
     }
 
     public void mostrarJuego(JFrame r, int tamaño, JFrame f) {

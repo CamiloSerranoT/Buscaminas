@@ -15,7 +15,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import negocio.Juego;
 import negocio.Tablero;
-import negocio.Usuario;
 import persistencia.Serializar;
 
 /**
@@ -236,7 +235,6 @@ public class vOpciones extends javax.swing.JFrame {
     private void jugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jugarActionPerformed
         if ("".equals(jTextField1.getText()) || (Integer.parseInt(jTextField1.getText()) < 9 && Integer.parseInt(jTextField1.getText()) > 0)) {
             int a = 0;
-            Usuario u = new Usuario("Jugador", 0);
 
             vJuego j = new vJuego();
             JPanel p = new JPanel();
@@ -255,8 +253,6 @@ public class vOpciones extends javax.swing.JFrame {
             juego.getTablero().calNumMinas(tamaños.getSelectedIndex() - 1, panel);
             juego.setNumPartidas(Integer.parseInt(jTextField1.getText()) - 1);
             juego.mostrarJuego(this, tamaños.getSelectedIndex() + 1, j);
-            j.getjLabel1().setText(u.getNickName());
-            j.getjLabel2().setText(u.getNickName());
             j.setJuego(juego);
         }
     }//GEN-LAST:event_jugarActionPerformed
