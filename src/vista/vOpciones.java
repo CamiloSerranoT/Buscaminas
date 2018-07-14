@@ -22,7 +22,6 @@ import persistencia.Serializar;
  * @author Jaen,Pedro,Camilo
  */
 public class vOpciones extends javax.swing.JFrame {
-
     Juego juego = new Juego();
     JPanel p = new JPanel();
     Serializar u = new Serializar();
