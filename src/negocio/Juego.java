@@ -6,20 +6,16 @@
 package negocio;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import vista.InicioJuego;
 
 /**
  *
- * @author Jaen,Pedro,Camilo
+ * @author CAMILO
  */
 public class Juego implements Serializable {
 

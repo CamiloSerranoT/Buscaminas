@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author User
+ * @author CAMILO
  */
 public class Serializar {
 

@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author Jaen,Pedro,Camilo
+ * @author CAMILO
  */
 public class Tablero implements Serializable {
 

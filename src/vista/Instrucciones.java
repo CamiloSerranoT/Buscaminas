@@ -9,7 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 /**
  *
- * @author Jaen,Pedro,Camilo
+ * @author CAMILO
  */
 public class Instrucciones extends javax.swing.JFrame {
 

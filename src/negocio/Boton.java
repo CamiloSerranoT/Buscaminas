@@ -10,7 +10,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author Jaen,Pedro,Camilo
+ * @author CAMILO
  */
 public class Boton extends JButton implements Serializable {
 

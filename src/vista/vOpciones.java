@@ -6,19 +6,15 @@
 package vista;
 
 import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.net.URL;
-import javax.swing.ButtonModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import negocio.Juego;
-import negocio.Tablero;
 
 /**
  *
- * @author Jaen,Pedro,Camilo
+ * @author CAMILO
  */
 public class vOpciones extends javax.swing.JFrame {
 
@@ -197,9 +193,9 @@ public class vOpciones extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addContainerGap(30, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(volver, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
-                            .addComponent(jugar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(volver, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
+                            .addComponent(jugar, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(87, 87, 87)
@@ -216,10 +212,10 @@ public class vOpciones extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addComponent(cbPartidas, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jugar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(volver, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36))
+                .addComponent(jugar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(volver, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -260,6 +256,8 @@ public class vOpciones extends javax.swing.JFrame {
         int cantPartidas;
         cantPartidas = cbPartidas.getSelectedIndex();
         int a = 0;
+        String nombrePersona1 = JOptionPane.showInputDialog("Nombre del jugador 1");
+        String nombrePersona2 = JOptionPane.showInputDialog("Nombre del jugador 2");
 
         vJuego j = new vJuego();
         JPanel p = new JPanel();
@@ -267,21 +265,21 @@ public class vOpciones extends javax.swing.JFrame {
             j.getjLabel1().setBackground(new java.awt.Color(250, 250, 250));
             j.getjLabel1().setFont(new java.awt.Font("Vineta BT", 1, 24));
             j.getjLabel1().setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 4));
-            JOptionPane.showMessageDialog(null, "Empiza el jugador 1");
+            JOptionPane.showMessageDialog(null, "Empiza el jugador " + nombrePersona1);
             a = 0;
         } else {
             j.getjLabel2().setBackground(new java.awt.Color(250, 250, 250));
             j.getjLabel2().setFont(new java.awt.Font("Vineta BT", 1, 24));
             j.getjLabel2().setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 4));
-            JOptionPane.showConfirmDialog(null, "Empieza el jugador 2");
+            JOptionPane.showConfirmDialog(null, "Empieza el jugador " + nombrePersona1);
             a = 1;
         }
         j.setNumJugador(a);
         juego.getTablero().calNumMinas(tamaños.getSelectedIndex() - 1, panel);
         juego.setNumPartidas(cantPartidas);
         juego.mostrarJuego(this, tamaños.getSelectedIndex() + 1, j);
-        j.getjLabel1().setText("claus");
-        j.getjLabel2().setText("jon");
+        j.getjLabel1().setText(nombrePersona1);
+        j.getjLabel2().setText(nombrePersona2);
         j.setJuego(juego);
 
     }//GEN-LAST:event_jugarActionPerformed
