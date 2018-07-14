@@ -29,10 +29,9 @@ public class Juego implements Serializable {
 
     public Juego() {
         tablero = new Tablero();
-
     }
 
-     public void setNumPartidas(int numPartidas) {
+    public void setNumPartidas(int numPartidas) {
         this.numPartidas = numPartidas;
     }
 
@@ -40,7 +39,6 @@ public class Juego implements Serializable {
         return numPartidas;
     }
 
-    
     public int getResultados() {
         return resultados;
     }

@@ -6,29 +6,24 @@
 package negocio;
 
 import javax.swing.JButton;
-import java.awt.*;
 import java.io.Serializable;
+
 /**
  *
  * @author Jaen,Pedro,Camilo
  */
 public class Boton extends JButton implements Serializable {
-    
-   
+
     private int estado;
     private boolean mina;
     private int numBoton;
-   
-    
 
     public Boton(int numBoton) {
-       
         this.estado = 0;
         this.mina = false;
         this.numBoton = numBoton;
     }
-    
-    
+
     public int getEstado() {
         return estado;
     }
@@ -53,7 +48,4 @@ public class Boton extends JButton implements Serializable {
         this.numBoton = numBoton;
     }
 
-    
-    
 }
-

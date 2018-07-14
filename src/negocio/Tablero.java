@@ -6,13 +6,10 @@
 package negocio;
 
 import java.awt.Color;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.Serializable;
 import java.util.Random;
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -36,7 +33,6 @@ public class Tablero implements Serializable {
 
     public Tablero() {
         p = new JPanel();
-
     }
 
     public Boton[][] getBotones() {
@@ -112,7 +108,6 @@ public class Tablero implements Serializable {
         while (a < numMinas) {
             for (int i = 0; i < this.tamaño; i++) {
                 for (int j = 0; j < this.tamaño; j++) {
-
                     botones[i][j] = new Boton(c);
                     botones[i][j].setBounds((400 / this.tamaño) * i, (400 / this.tamaño) * j, 400 / this.tamaño, 400 / this.tamaño);
                     botones[i][j].setBackground(new java.awt.Color(102, 255, 153));
@@ -126,7 +121,7 @@ public class Tablero implements Serializable {
                         if (botones[i][j].getMina() == false) {
                             botones[i][j].setMina(generarMinas());
                             if (botones[i][j].getMina() == true) {
-                                
+
                                 a++;
                             }
                         }
@@ -137,7 +132,7 @@ public class Tablero implements Serializable {
         }
         p.setVisible(true);
         p.setLayout(null);
-        p.setBounds(15, 150, 400, 400);
+        p.setBounds(15, 120, 400, 400);
 
         f.add(p);
     }
