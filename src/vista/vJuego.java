@@ -141,7 +141,6 @@ public class vJuego extends javax.swing.JFrame implements ActionListener {
         });
 
         jlTitulo.setFont(new java.awt.Font("Wide Latin", 1, 48)); // NOI18N
-        jlTitulo.setForeground(new java.awt.Color(153, 153, 255));
         jlTitulo.setText("BUSCAMINAS");
 
         jLabel2.setFont(new java.awt.Font("Vineta BT", 0, 24)); // NOI18N
