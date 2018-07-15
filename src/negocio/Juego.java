@@ -12,6 +12,7 @@ import java.util.Random;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import vista.InicioJuego;
+import vista.vJuego;
 
 /**
  *
@@ -59,31 +60,23 @@ public class Juego implements Serializable {
 
     }
 
-    public void verificarJugada(ActionEvent e, JFrame f, int a) {
-
+    public void verificarJugada(ActionEvent e, JFrame f, int a, String nombreJugador) {
         Boton obj = (Boton) e.getSource();
+
         if (obj.getMina()) {
             obj.setEnabled(false);
             obj.setFont(new java.awt.Font("Verdana", 0, 90 / tablero.getTamaño()));
             obj.setForeground(Color.ORANGE);
             obj.setText("BUM");
-            JOptionPane.showMessageDialog(null, "juego terminado el ganador es :el jugador 1");
+            JOptionPane.showMessageDialog(null, "El ganador de la partida es: " + nombreJugador);
             System.out.println(numPartidas);
 
             if (numPartidas > 0) {
-                int v = JOptionPane.showConfirmDialog(null, "desea volver a jugar");
-                if (v == JOptionPane.YES_OPTION) {
-                    numPartidas--;
-                    tablero.getP().removeAll();
-                    mostrarJuego(f, tablero.getTamaño(), f);
-                } else {
-                    JOptionPane.showMessageDialog(obj, "se acabo el juego");
-                    InicioJuego i = new InicioJuego();
-                    i.setVisible(true);
-                    f.dispose();
-                }
+                numPartidas--;
+                tablero.getP().removeAll();
+                mostrarJuego(f, tablero.getTamaño(), f);
             } else {
-                JOptionPane.showMessageDialog(obj, "se acabo el juego");
+                JOptionPane.showMessageDialog(null, "Fin de la partida");
                 InicioJuego i = new InicioJuego();
                 i.setVisible(true);
                 f.dispose();
@@ -94,14 +87,12 @@ public class Juego implements Serializable {
             obj.setForeground(Color.red);
             obj.setText(verificarPista(e));
             obj.setEstado(1);
-
         } else {
             obj.setEnabled(false);
             obj.setFont(new java.awt.Font("Verdana", 0, 90 / tablero.getTamaño()));
             obj.setForeground(Color.blue);
             obj.setText(verificarPista(e));
             obj.setEstado(0);
-
         }
     }
 
@@ -165,6 +156,5 @@ public class Juego implements Serializable {
         Random r = new Random();
         int a = r.nextInt(2);
         return a;
-
     }
 }

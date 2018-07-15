@@ -25,6 +25,15 @@ public class vJuego extends javax.swing.JFrame implements ActionListener {
      */
     Juego juego;
     private int numJugador;
+    private String nombreJugador;
+
+    public vJuego() {
+        initComponents();
+        setLocationRelativeTo(null);
+        setResizable(false);
+        setIconImage(new ImageIcon(getClass().getResource("/imagenes/ima.png")).getImage());
+        ((JPanel) getContentPane()).setOpaque(false);
+    }
 
     public int getNumJugador() {
         return numJugador;
@@ -34,15 +43,20 @@ public class vJuego extends javax.swing.JFrame implements ActionListener {
         this.numJugador = numJugador;
     }
 
-    public vJuego() {
-        initComponents();
-        
-        setIconImage(new ImageIcon(getClass().getResource("/imagenes/ima.png")).getImage());
-        ((JPanel) getContentPane()).setOpaque(false);
+    public String getNombreJugador() {
+        return nombreJugador;
+    }
+
+    public void setNombreJugador(String nombreJugador) {
+        this.nombreJugador = nombreJugador;
     }
 
     public Juego getJuego() {
         return juego;
+    }
+
+    public void setJuego(Juego juego) {
+        this.juego = juego;
     }
 
     public JLabel getjLabel1() {
@@ -61,12 +75,9 @@ public class vJuego extends javax.swing.JFrame implements ActionListener {
         this.jLabel2 = jLabel2;
     }
 
-    public void setJuego(Juego juego) {
-        this.juego = juego;
-    }
-
     public void actionPerformed(ActionEvent e) {
-        juego.verificarJugada(e, this, numJugador);
+        juego.verificarJugada(e, this, numJugador, nombreJugador);
+
         if (numJugador == 1) {
             numJugador = 0;
             jLabel1.setBackground(new java.awt.Color(250, 250, 250));
@@ -75,6 +86,7 @@ public class vJuego extends javax.swing.JFrame implements ActionListener {
             jLabel2.setBackground(Color.DARK_GRAY);
             jLabel2.setFont(new java.awt.Font("Vineta BT", 0, 24));
             jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 0));
+            nombreJugador = jLabel1.getText();
         } else {
             numJugador = 1;
             jLabel2.setBackground(new java.awt.Color(250, 250, 250));
@@ -83,8 +95,8 @@ public class vJuego extends javax.swing.JFrame implements ActionListener {
             jLabel1.setBackground(Color.DARK_GRAY);
             jLabel1.setFont(new java.awt.Font("Vineta BT", 0, 24));
             jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 0));
+            nombreJugador = jLabel2.getText();
         }
-
     }
 
     /**

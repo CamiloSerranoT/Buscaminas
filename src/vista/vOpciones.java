@@ -253,30 +253,30 @@ public class vOpciones extends javax.swing.JFrame {
     }//GEN-LAST:event_tamañosActionPerformed
 
     private void jugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jugarActionPerformed
-        int cantPartidas;
-        cantPartidas = cbPartidas.getSelectedIndex();
         int a = 0;
         String nombrePersona1 = JOptionPane.showInputDialog("Nombre del jugador 1");
         String nombrePersona2 = JOptionPane.showInputDialog("Nombre del jugador 2");
-
         vJuego j = new vJuego();
         JPanel p = new JPanel();
+
         if (juego.elegirPrimerMovimiento() == 0) {
             j.getjLabel1().setBackground(new java.awt.Color(250, 250, 250));
             j.getjLabel1().setFont(new java.awt.Font("Vineta BT", 1, 24));
             j.getjLabel1().setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 4));
             JOptionPane.showMessageDialog(null, "Empiza el jugador " + nombrePersona1);
             a = 0;
+            j.setNombreJugador(nombrePersona1);
         } else {
             j.getjLabel2().setBackground(new java.awt.Color(250, 250, 250));
             j.getjLabel2().setFont(new java.awt.Font("Vineta BT", 1, 24));
             j.getjLabel2().setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 4));
-            JOptionPane.showConfirmDialog(null, "Empieza el jugador " + nombrePersona1);
+            JOptionPane.showMessageDialog(null, "Empieza el jugador " + nombrePersona2);
             a = 1;
+            j.setNombreJugador(nombrePersona2);
         }
         j.setNumJugador(a);
         juego.getTablero().calNumMinas(tamaños.getSelectedIndex() - 1, panel);
-        juego.setNumPartidas(cantPartidas);
+        juego.setNumPartidas(cbPartidas.getSelectedIndex());
         juego.mostrarJuego(this, tamaños.getSelectedIndex() + 1, j);
         j.getjLabel1().setText(nombrePersona1);
         j.getjLabel2().setText(nombrePersona2);

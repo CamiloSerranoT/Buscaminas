@@ -92,7 +92,6 @@ public class Tablero implements Serializable {
     }
 
     public boolean generarMinas() {
-
         Random generar = new Random();
         return generar.nextBoolean();
     }
