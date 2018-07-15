@@ -23,6 +23,7 @@ public class Juego implements Serializable {
     private int numPartidas;
     private int resultados;
     private Tablero tablero;
+    private int[] vicJugador = {0, 0};
 
     public Juego() {
         tablero = new Tablero();
@@ -52,16 +53,24 @@ public class Juego implements Serializable {
         this.tablero = tablero;
     }
 
+    public int[] getVicJugador() {
+        return vicJugador;
+    }
+
+    public void setVicJugador(int[] vicJugador) {
+        this.vicJugador = vicJugador;
+    }
+
     public void mostrarJuego(JFrame r, int tamaño, JFrame f) {
         r.dispose();
         f.setVisible(true);
 
         tablero.generarTablero(tamaño, f);
-
     }
 
-    public void verificarJugada(ActionEvent e, JFrame f, int a, String nombreJugador) {
+    public void verificarJugada(ActionEvent e, JFrame f, int a, String nombreJugador, int codigoJugador) {
         Boton obj = (Boton) e.getSource();
+        vJuego ju = new vJuego();
 
         if (obj.getMina()) {
             obj.setEnabled(false);
@@ -69,7 +78,12 @@ public class Juego implements Serializable {
             obj.setForeground(Color.ORANGE);
             obj.setText("BUM");
             JOptionPane.showMessageDialog(null, "El ganador de la partida es: " + nombreJugador);
-            System.out.println(numPartidas);
+
+            if (codigoJugador == 1) {
+                vicJugador[0]++;
+            } else {
+                vicJugador[1]++;
+            }
 
             if (numPartidas > 0) {
                 numPartidas--;
@@ -77,6 +91,7 @@ public class Juego implements Serializable {
                 mostrarJuego(f, tablero.getTamaño(), f);
             } else {
                 JOptionPane.showMessageDialog(null, "Fin de la partida");
+                ju.resultados(vicJugador);
                 InicioJuego i = new InicioJuego();
                 i.setVisible(true);
                 f.dispose();

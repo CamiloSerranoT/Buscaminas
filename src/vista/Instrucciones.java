@@ -4,9 +4,10 @@
  * and open the template in the editor.
  */
 package vista;
-import java.awt.event.ActionEvent;
+
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+
 /**
  *
  * @author CAMILO
@@ -21,7 +22,7 @@ public class Instrucciones extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
         setIconImage(new ImageIcon(getClass().getResource("/imagenes/ima.png")).getImage());
-        ((JPanel)getContentPane()).setOpaque(false);
+        ((JPanel) getContentPane()).setOpaque(false);
     }
 
     /**
@@ -113,7 +114,7 @@ public class Instrucciones extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       InicioJuego j = new InicioJuego();
+        InicioJuego j = new InicioJuego();
         j.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -146,10 +147,8 @@ public class Instrucciones extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Instrucciones().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Instrucciones().setVisible(true);
         });
     }
 

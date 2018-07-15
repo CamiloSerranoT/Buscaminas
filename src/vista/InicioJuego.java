@@ -25,27 +25,18 @@ public class InicioJuego extends javax.swing.JFrame {
         setIconImage(new ImageIcon(getClass().getResource("/imagenes/ima.png")).getImage());
         ((JPanel) getContentPane()).setOpaque(false);
 
-        jbIniciar.addActionListener(new java.awt.event.ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                vOpciones iniciar1 = new vOpciones();
-                iniciar1.setVisible(true);
-                dispose();
-            }
+        jbIniciar.addActionListener((ActionEvent e) -> {
+            vOpciones iniciar1 = new vOpciones();
+            iniciar1.setVisible(true);
+            dispose();
         });
-        jbInstrucciones.addActionListener(new java.awt.event.ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Instrucciones instruccion1 = new Instrucciones();
-                instruccion1.setVisible(true);
-                dispose();
-            }
+        jbInstrucciones.addActionListener((ActionEvent e) -> {
+            Instrucciones instruccion1 = new Instrucciones();
+            instruccion1.setVisible(true);
+            dispose();
         });
-        jbSalir.addActionListener(new java.awt.event.ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
+        jbSalir.addActionListener((ActionEvent e) -> {
+            System.exit(0);
         });
     }
 
@@ -176,10 +167,8 @@ public class InicioJuego extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new InicioJuego().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new InicioJuego().setVisible(true);
         });
     }
 

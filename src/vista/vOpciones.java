@@ -257,7 +257,6 @@ public class vOpciones extends javax.swing.JFrame {
         String nombrePersona1 = JOptionPane.showInputDialog("Nombre del jugador 1");
         String nombrePersona2 = JOptionPane.showInputDialog("Nombre del jugador 2");
         vJuego j = new vJuego();
-        JPanel p = new JPanel();
 
         if (juego.elegirPrimerMovimiento() == 0) {
             j.getjLabel1().setBackground(new java.awt.Color(250, 250, 250));
@@ -266,6 +265,7 @@ public class vOpciones extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Empiza el jugador " + nombrePersona1);
             a = 0;
             j.setNombreJugador(nombrePersona1);
+            j.setCodigoJugador(1);
         } else {
             j.getjLabel2().setBackground(new java.awt.Color(250, 250, 250));
             j.getjLabel2().setFont(new java.awt.Font("Vineta BT", 1, 24));
@@ -273,6 +273,7 @@ public class vOpciones extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Empieza el jugador " + nombrePersona2);
             a = 1;
             j.setNombreJugador(nombrePersona2);
+            j.setCodigoJugador(2);
         }
         j.setNumJugador(a);
         juego.getTablero().calNumMinas(tamaños.getSelectedIndex() - 1, panel);
@@ -409,10 +410,8 @@ public class vOpciones extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new vOpciones().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new vOpciones().setVisible(true);
         });
     }
 

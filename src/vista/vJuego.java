@@ -5,12 +5,18 @@
  */
 package vista;
 
+import java.applet.Applet;
 import java.applet.AudioClip;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import negocio.Juego;
 
@@ -26,6 +32,7 @@ public class vJuego extends javax.swing.JFrame implements ActionListener {
     Juego juego;
     private int numJugador;
     private String nombreJugador;
+    private int codigoJugador;
 
     public vJuego() {
         initComponents();
@@ -59,6 +66,14 @@ public class vJuego extends javax.swing.JFrame implements ActionListener {
         this.juego = juego;
     }
 
+    public int getCodigoJugador() {
+        return codigoJugador;
+    }
+
+    public void setCodigoJugador(int codigoJugador) {
+        this.codigoJugador = codigoJugador;
+    }
+
     public JLabel getjLabel1() {
         return jLabel1;
     }
@@ -75,8 +90,9 @@ public class vJuego extends javax.swing.JFrame implements ActionListener {
         this.jLabel2 = jLabel2;
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
-        juego.verificarJugada(e, this, numJugador, nombreJugador);
+        juego.verificarJugada(e, this, numJugador, nombreJugador, codigoJugador);
 
         if (numJugador == 1) {
             numJugador = 0;
@@ -87,6 +103,7 @@ public class vJuego extends javax.swing.JFrame implements ActionListener {
             jLabel2.setFont(new java.awt.Font("Vineta BT", 0, 24));
             jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 0));
             nombreJugador = jLabel1.getText();
+            codigoJugador = 1;
         } else {
             numJugador = 1;
             jLabel2.setBackground(new java.awt.Color(250, 250, 250));
@@ -96,6 +113,25 @@ public class vJuego extends javax.swing.JFrame implements ActionListener {
             jLabel1.setFont(new java.awt.Font("Vineta BT", 0, 24));
             jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 0));
             nombreJugador = jLabel2.getText();
+            codigoJugador = 2;
+        }
+    }
+
+    public void resultados(int[] vicJugador) {
+        int cont = 0;
+        cont = vicJugador[0] + vicJugador[1];
+        if (cont == 1) {
+            JOptionPane.showMessageDialog(null, "Resultados\nJudador " + jLabel1.getText() + ": " + vicJugador[0]
+                    + " partida ganada \nJudador " + jLabel2.getText() + ": " + vicJugador[1] + " partida ganada");
+        } else {
+            if (vicJugador[0] == vicJugador[1]) {
+                JOptionPane.showMessageDialog(null, "Resultados\nJudador " + jLabel1.getText() + ": " + vicJugador[0]
+                        + " partidas ganadas \nJudador " + jLabel2.getText() + ": " + vicJugador[1] + " partidas ganadas"
+                        + "\n Es un empate");
+            } else {
+                JOptionPane.showMessageDialog(null, "Resultados\nJudador " + jLabel1.getText() + ": " + vicJugador[0]
+                        + " partidas ganadas \nJudador " + jLabel2.getText() + ": " + vicJugador[1] + " partidas ganadas");
+            }
         }
     }
 
@@ -284,9 +320,8 @@ public class vJuego extends javax.swing.JFrame implements ActionListener {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
-        AudioClip sonido;
-        sonido = java.applet.Applet.newAudioClip(getClass().getResource("/imagenes/OMFG - Hello.wav"));
-        sonido.stop();
+        AudioClip clip = Applet.newAudioClip(getClass().getResource("/canciones/cancionRelajante.wav"));
+        clip.stop();
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -296,9 +331,8 @@ public class vJuego extends javax.swing.JFrame implements ActionListener {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-        AudioClip sonido;
-        sonido = java.applet.Applet.newAudioClip(getClass().getResource("/imagenes/OMFG - Hello.wav"));
-        sonido.loop();
+        AudioClip clip = Applet.newAudioClip(getClass().getResource("/canciones/cancionRelajante.wav"));
+        clip.play();
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -335,10 +369,8 @@ public class vJuego extends javax.swing.JFrame implements ActionListener {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new vJuego().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new vJuego().setVisible(true);
         });
     }
 
